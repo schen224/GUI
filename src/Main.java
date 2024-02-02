@@ -18,24 +18,26 @@ public class Main {
         panel.setBackground(new Color(90,90,90));
 
         ImageIcon icon = new ImageIcon("Images/one.jpeg");
-        ImageIcon testIcon = new ImageIcon("Images/two.jpeg");
         ImageIcon anotherIcon = new ImageIcon("Images/three.jpeg");
         icon.setImage(icon.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-        testIcon.setImage(testIcon.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
         anotherIcon.setImage(anotherIcon.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-        JLabel picLabel = new JLabel();
+        JLabel picLabel = new JLabel(icon);
 
         JTextField textField = new JTextField(10);
 
-//components
+
         JLabel label = new JLabel("Now playing: ");
         JButton buttonOne = new JButton("<--");
 
         buttonOne.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // System.out.println("nooooo");
-                label.setText("Now playing: Back");
+            public void actionPerformed(ActionEvent e){
+
+                    label.setText("Now playing: Back");
+                    JLabel picLabel = new JLabel(anotherIcon);
+                    panel.add(picLabel, BorderLayout.CENTER);
+
+
             }
         });
 
@@ -48,8 +50,6 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
 
                 label.setText("Now playing: Next ");
-                JLabel picLabel = new JLabel(anotherIcon);
-                panel.add(picLabel, BorderLayout.CENTER);
             }
         });
 
@@ -59,15 +59,14 @@ public class Main {
                 String blah = textField.getText();
 
                 label.setText("Now playing: " + blah);
-                JLabel picLabel = new JLabel(icon);
-                panel.remove();
+
 
 
             }
         });
 
         //components to panel
-        panel.add(label, BorderLayout.NORTH);
+                panel.add(label, BorderLayout.NORTH);
                 panel.add(buttonOne, BorderLayout.WEST);
                 panel.add(buttonTwo, BorderLayout.EAST);
                 panel.add(picLabel, BorderLayout.CENTER);
@@ -76,6 +75,7 @@ public class Main {
                         //Add the panel to frame
         frame.add(panel);
         frame.setVisible(true);
+
 
 
 
