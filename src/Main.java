@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         //1. Create a frame
         JFrame frame = new JFrame();
-        frame.setSize(500, 500);
+        frame.setSize(1000, 1000);
 
 //panel
         JPanel panel = new JPanel();
@@ -19,9 +19,9 @@ public class Main {
 
         ImageIcon icon = new ImageIcon("Images/one.jpeg");
         ImageIcon anotherIcon = new ImageIcon("Images/three.jpeg");
-        icon.setImage(icon.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-        anotherIcon.setImage(anotherIcon.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-        JLabel picLabel = new JLabel(icon);
+        icon.setImage(icon.getImage().getScaledInstance(500,500,Image.SCALE_DEFAULT));
+        anotherIcon.setImage(anotherIcon.getImage().getScaledInstance(500,500,Image.SCALE_DEFAULT));
+        JLabel picLabel = new JLabel();
 
         JTextField textField = new JTextField(10);
 
@@ -31,10 +31,11 @@ public class Main {
 
         buttonOne.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
 
+            public void actionPerformed(ActionEvent e){
+panel.repaint();
                     label.setText("Now playing: Back");
-                    JLabel picLabel = new JLabel(anotherIcon);
+                    picLabel.setIcon(anotherIcon);
                     panel.add(picLabel, BorderLayout.CENTER);
 
 
@@ -49,7 +50,10 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+              picLabel.setIcon(icon);
+                panel.add(picLabel, BorderLayout.CENTER);
                 label.setText("Now playing: Next ");
+
             }
         });
 
@@ -75,6 +79,8 @@ public class Main {
                         //Add the panel to frame
         frame.add(panel);
         frame.setVisible(true);
+
+        
 
 
 
