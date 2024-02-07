@@ -19,22 +19,24 @@ public class Main {
 
         ImageIcon icon = new ImageIcon("Images/one.jpeg");
         ImageIcon anotherIcon = new ImageIcon("Images/three.jpeg");
+        ImageIcon thirdIcon = new ImageIcon("Images/four.jpeg");
         icon.setImage(icon.getImage().getScaledInstance(500,500,Image.SCALE_DEFAULT));
         anotherIcon.setImage(anotherIcon.getImage().getScaledInstance(500,500,Image.SCALE_DEFAULT));
+        thirdIcon.setImage(thirdIcon.getImage().getScaledInstance(500,500,Image.SCALE_DEFAULT));
         JLabel picLabel = new JLabel();
 
         JTextField textField = new JTextField(10);
 
 
-        JLabel label = new JLabel("Now playing: ");
+        JLabel label = new JLabel("Now showing: ");
         JButton buttonOne = new JButton("<--");
 
         buttonOne.addActionListener(new ActionListener() {
             @Override
 
             public void actionPerformed(ActionEvent e){
-panel.repaint();
-                    label.setText("Now playing: Back");
+
+                    label.setText("Now showing: Cat");
                     picLabel.setIcon(anotherIcon);
                     panel.add(picLabel, BorderLayout.CENTER);
 
@@ -52,7 +54,7 @@ panel.repaint();
 
               picLabel.setIcon(icon);
                 panel.add(picLabel, BorderLayout.CENTER);
-                label.setText("Now playing: Next ");
+                label.setText("Now showing: Album ");
 
             }
         });
@@ -61,8 +63,9 @@ panel.repaint();
             @Override
             public void actionPerformed(ActionEvent e) {
                 String blah = textField.getText();
+                picLabel.setIcon(thirdIcon);
+                label.setText("Now showing: " + blah);
 
-                label.setText("Now playing: " + blah);
 
 
 
